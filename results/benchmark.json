@@ -1,0 +1,1416 @@
+{
+  "timestamp_utc": "2026-09-20T04:54:47.211816+00:00",
+  "environment": {
+    "python": "3.11.7 | packaged by Anaconda, Inc. | (main, Dec 15 2023, 18:05:47) [MSC v.1916 64 bit (AMD64)]",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "cpu": "12th Gen Intel(R) Core(TM) i5-12500H",
+    "logical_cpus": 16,
+    "processes": 1
+  },
+  "method": {
+    "repeats": 5,
+    "timer": "perf_counter_ns",
+    "gc_during_timing": false,
+    "warmup": "one call per case",
+    "commit_includes": "fresh salts, hashing, allocations; no JSON or disk I/O",
+    "open_verify": "cached tree; no file loading; verify includes leaf hashing",
+    "messages": "32-byte index encoding; identical for both suites",
+    "memory_metric": "exact byte payload only, not Python process RSS"
+  },
+  "hashes": [
+    {
+      "suite": "sha256",
+      "input_bytes": 0,
+      "iterations_per_repeat": 100,
+      "samples_ms": [
+        0.153164,
+        0.148889,
+        0.145625,
+        0.145576,
+        0.151028
+      ],
+      "median_ms": 0.148889,
+      "min_ms": 0.145576,
+      "max_ms": 0.153164,
+      "mib_per_s": 0.0
+    },
+    {
+      "suite": "sha3-256",
+      "input_bytes": 0,
+      "iterations_per_repeat": 100,
+      "samples_ms": [
+        0.466627,
+        0.460701,
+        0.489444,
+        0.510281,
+        0.499824
+      ],
+      "median_ms": 0.489444,
+      "min_ms": 0.460701,
+      "max_ms": 0.510281,
+      "mib_per_s": 0.0
+    },
+    {
+      "suite": "sha256",
+      "input_bytes": 32,
+      "iterations_per_repeat": 100,
+      "samples_ms": [
+        0.170892,
+        0.169153,
+        0.168035,
+        0.16333,
+        0.161127
+      ],
+      "median_ms": 0.168035,
+      "min_ms": 0.161127,
+      "max_ms": 0.170892,
+      "mib_per_s": 0.18161441440771267
+    },
+    {
+      "suite": "sha3-256",
+      "input_bytes": 32,
+      "iterations_per_repeat": 100,
+      "samples_ms": [
+        0.506114,
+        0.512653,
+        0.500113,
+        0.498086,
+        0.510747
+      ],
+      "median_ms": 0.506114,
+      "min_ms": 0.498086,
+      "max_ms": 0.512653,
+      "mib_per_s": 0.06029783433179086
+    },
+    {
+      "suite": "sha256",
+      "input_bytes": 46,
+      "iterations_per_repeat": 100,
+      "samples_ms": [
+        0.164364,
+        0.159832,
+        0.156726,
+        0.152624,
+        0.144942
+      ],
+      "median_ms": 0.156726,
+      "min_ms": 0.144942,
+      "max_ms": 0.164364,
+      "mib_per_s": 0.2799090039603352
+    },
+    {
+      "suite": "sha3-256",
+      "input_bytes": 46,
+      "iterations_per_repeat": 100,
+      "samples_ms": [
+        0.47741,
+        0.472138,
+        0.483054,
+        0.514559,
+        0.49348
+      ],
+      "median_ms": 0.483054,
+      "min_ms": 0.472138,
+      "max_ms": 0.514559,
+      "mib_per_s": 0.0908159720335356
+    },
+    {
+      "suite": "sha256",
+      "input_bytes": 55,
+      "iterations_per_repeat": 100,
+      "samples_ms": [
+        0.160361,
+        0.158049,
+        0.162859,
+        0.156021,
+        0.155849
+      ],
+      "median_ms": 0.158049,
+      "min_ms": 0.155849,
+      "max_ms": 0.162859,
+      "mib_per_s": 0.3318723142971088
+    },
+    {
+      "suite": "sha3-256",
+      "input_bytes": 55,
+      "iterations_per_repeat": 100,
+      "samples_ms": [
+        0.522368,
+        0.487322,
+        0.606816,
+        0.509188,
+        0.498173
+      ],
+      "median_ms": 0.509188,
+      "min_ms": 0.487322,
+      "max_ms": 0.606816,
+      "mib_per_s": 0.10301124025378398
+    },
+    {
+      "suite": "sha256",
+      "input_bytes": 56,
+      "iterations_per_repeat": 100,
+      "samples_ms": [
+        0.321025,
+        0.309825,
+        0.308457,
+        0.303635,
+        0.303332
+      ],
+      "median_ms": 0.308457,
+      "min_ms": 0.303332,
+      "max_ms": 0.321025,
+      "mib_per_s": 0.1731384332945921
+    },
+    {
+      "suite": "sha3-256",
+      "input_bytes": 56,
+      "iterations_per_repeat": 100,
+      "samples_ms": [
+        0.482988,
+        0.475508,
+        0.478853,
+        0.480279,
+        0.49185
+      ],
+      "median_ms": 0.480279,
+      "min_ms": 0.475508,
+      "max_ms": 0.49185,
+      "mib_per_s": 0.1111973701093531
+    },
+    {
+      "suite": "sha256",
+      "input_bytes": 62,
+      "iterations_per_repeat": 100,
+      "samples_ms": [
+        0.313252,
+        0.305666,
+        0.347418,
+        0.324255,
+        0.320597
+      ],
+      "median_ms": 0.320597,
+      "min_ms": 0.305666,
+      "max_ms": 0.347418,
+      "mib_per_s": 0.18443032098612117
+    },
+    {
+      "suite": "sha3-256",
+      "input_bytes": 62,
+      "iterations_per_repeat": 100,
+      "samples_ms": [
+        0.503573,
+        0.504348,
+        0.517077,
+        0.506328,
+        0.516537
+      ],
+      "median_ms": 0.506328,
+      "min_ms": 0.503573,
+      "max_ms": 0.517077,
+      "mib_per_s": 0.11677767695483461
+    },
+    {
+      "suite": "sha256",
+      "input_bytes": 64,
+      "iterations_per_repeat": 100,
+      "samples_ms": [
+        0.333634,
+        0.322642,
+        0.31909,
+        0.328265,
+        0.32485
+      ],
+      "median_ms": 0.32485,
+      "min_ms": 0.31909,
+      "max_ms": 0.333634,
+      "mib_per_s": 0.1878871979375096
+    },
+    {
+      "suite": "sha3-256",
+      "input_bytes": 64,
+      "iterations_per_repeat": 100,
+      "samples_ms": [
+        0.511738,
+        0.504104,
+        0.490104,
+        0.470957,
+        0.464179
+      ],
+      "median_ms": 0.490104,
+      "min_ms": 0.464179,
+      "max_ms": 0.511738,
+      "mib_per_s": 0.12453511142533014
+    },
+    {
+      "suite": "sha256",
+      "input_bytes": 70,
+      "iterations_per_repeat": 100,
+      "samples_ms": [
+        0.306281,
+        0.292642,
+        0.404156,
+        0.626647,
+        0.755642
+      ],
+      "median_ms": 0.404156,
+      "min_ms": 0.292642,
+      "max_ms": 0.755642,
+      "mib_per_s": 0.1651768182296873
+    },
+    {
+      "suite": "sha3-256",
+      "input_bytes": 70,
+      "iterations_per_repeat": 100,
+      "samples_ms": [
+        1.273305,
+        0.908438,
+        1.0389,
+        0.854386,
+        0.92023
+      ],
+      "median_ms": 0.92023,
+      "min_ms": 0.854386,
+      "max_ms": 1.273305,
+      "mib_per_s": 0.07254404023824207
+    },
+    {
+      "suite": "sha256",
+      "input_bytes": 94,
+      "iterations_per_repeat": 100,
+      "samples_ms": [
+        0.724236,
+        0.582253,
+        0.539718,
+        0.520342,
+        0.524512
+      ],
+      "median_ms": 0.539718,
+      "min_ms": 0.520342,
+      "max_ms": 0.724236,
+      "mib_per_s": 0.1660967129912056
+    },
+    {
+      "suite": "sha3-256",
+      "input_bytes": 94,
+      "iterations_per_repeat": 100,
+      "samples_ms": [
+        0.818333,
+        0.911626,
+        0.856953,
+        1.093446,
+        0.949301
+      ],
+      "median_ms": 0.911626,
+      "min_ms": 0.818333,
+      "max_ms": 1.093446,
+      "mib_per_s": 0.09833570536841589
+    },
+    {
+      "suite": "sha256",
+      "input_bytes": 119,
+      "iterations_per_repeat": 100,
+      "samples_ms": [
+        0.565535,
+        0.575128,
+        0.636153,
+        0.50358,
+        0.498734
+      ],
+      "median_ms": 0.565535,
+      "min_ms": 0.498734,
+      "max_ms": 0.636153,
+      "mib_per_s": 0.20067236095439495
+    },
+    {
+      "suite": "sha3-256",
+      "input_bytes": 119,
+      "iterations_per_repeat": 100,
+      "samples_ms": [
+        0.870251,
+        0.891654,
+        0.863525,
+        0.87567,
+        0.785807
+      ],
+      "median_ms": 0.870251,
+      "min_ms": 0.785807,
+      "max_ms": 0.891654,
+      "mib_per_s": 0.1304074843376724
+    },
+    {
+      "suite": "sha256",
+      "input_bytes": 120,
+      "iterations_per_repeat": 100,
+      "samples_ms": [
+        0.789302,
+        0.910901,
+        0.816014,
+        0.764874,
+        0.7541
+      ],
+      "median_ms": 0.789302,
+      "min_ms": 0.7541,
+      "max_ms": 0.910901,
+      "mib_per_s": 0.1449900265915328
+    },
+    {
+      "suite": "sha3-256",
+      "input_bytes": 120,
+      "iterations_per_repeat": 100,
+      "samples_ms": [
+        0.896077,
+        0.835736,
+        0.839812,
+        0.806498,
+        0.850156
+      ],
+      "median_ms": 0.839812,
+      "min_ms": 0.806498,
+      "max_ms": 0.896077,
+      "mib_per_s": 0.13626968651168356
+    },
+    {
+      "suite": "sha256",
+      "input_bytes": 135,
+      "iterations_per_repeat": 100,
+      "samples_ms": [
+        0.793315,
+        0.795622,
+        0.868371,
+        1.006263,
+        0.938668
+      ],
+      "median_ms": 0.868371,
+      "min_ms": 0.793315,
+      "max_ms": 1.006263,
+      "mib_per_s": 0.14826155262536836
+    },
+    {
+      "suite": "sha3-256",
+      "input_bytes": 135,
+      "iterations_per_repeat": 100,
+      "samples_ms": [
+        0.822856,
+        0.891808,
+        0.824135,
+        0.948913,
+        0.9064
+      ],
+      "median_ms": 0.891808,
+      "min_ms": 0.822856,
+      "max_ms": 0.948913,
+      "mib_per_s": 0.14436519151526309
+    },
+    {
+      "suite": "sha256",
+      "input_bytes": 136,
+      "iterations_per_repeat": 100,
+      "samples_ms": [
+        0.681607,
+        0.886504,
+        0.820903,
+        0.771075,
+        0.766489
+      ],
+      "median_ms": 0.771075,
+      "min_ms": 0.681607,
+      "max_ms": 0.886504,
+      "mib_per_s": 0.16820634442985444
+    },
+    {
+      "suite": "sha3-256",
+      "input_bytes": 136,
+      "iterations_per_repeat": 100,
+      "samples_ms": [
+        1.64637,
+        1.689983,
+        1.616668,
+        1.640961,
+        1.707963
+      ],
+      "median_ms": 1.64637,
+      "min_ms": 1.616668,
+      "max_ms": 1.707963,
+      "mib_per_s": 0.07877919728326561
+    },
+    {
+      "suite": "sha256",
+      "input_bytes": 137,
+      "iterations_per_repeat": 100,
+      "samples_ms": [
+        0.815597,
+        0.823566,
+        0.915644,
+        0.801118,
+        0.896257
+      ],
+      "median_ms": 0.823566,
+      "min_ms": 0.801118,
+      "max_ms": 0.915644,
+      "mib_per_s": 0.15864348619012472
+    },
+    {
+      "suite": "sha3-256",
+      "input_bytes": 137,
+      "iterations_per_repeat": 100,
+      "samples_ms": [
+        1.88987,
+        1.655647,
+        1.788707,
+        1.769681,
+        2.021665
+      ],
+      "median_ms": 1.788707,
+      "min_ms": 1.655647,
+      "max_ms": 2.021665,
+      "mib_per_s": 0.0730434785281526
+    },
+    {
+      "suite": "sha256",
+      "input_bytes": 1024,
+      "iterations_per_repeat": 16,
+      "samples_ms": [
+        5.00505,
+        5.04260625,
+        5.07766875,
+        4.65535,
+        4.2850375
+      ],
+      "median_ms": 5.00505,
+      "min_ms": 4.2850375,
+      "max_ms": 5.07766875,
+      "mib_per_s": 0.19511543341225365
+    },
+    {
+      "suite": "sha3-256",
+      "input_bytes": 1024,
+      "iterations_per_repeat": 16,
+      "samples_ms": [
+        6.83933125,
+        6.53495625,
+        6.5952125,
+        7.25469375,
+        7.20399375
+      ],
+      "median_ms": 6.83933125,
+      "min_ms": 6.53495625,
+      "max_ms": 7.25469375,
+      "mib_per_s": 0.1427862556006481
+    },
+    {
+      "suite": "sha256",
+      "input_bytes": 4096,
+      "iterations_per_repeat": 4,
+      "samples_ms": [
+        18.1478,
+        17.543325,
+        18.039025,
+        19.028925,
+        18.3485
+      ],
+      "median_ms": 18.1478,
+      "min_ms": 17.543325,
+      "max_ms": 19.028925,
+      "mib_per_s": 0.21524647615688955
+    },
+    {
+      "suite": "sha3-256",
+      "input_bytes": 4096,
+      "iterations_per_repeat": 4,
+      "samples_ms": [
+        27.359475,
+        29.52605,
+        25.685425,
+        25.764725,
+        25.336475
+      ],
+      "median_ms": 25.764725,
+      "min_ms": 25.336475,
+      "max_ms": 29.52605,
+      "mib_per_s": 0.15161233042464067
+    },
+    {
+      "suite": "sha256",
+      "input_bytes": 65536,
+      "iterations_per_repeat": 1,
+      "samples_ms": [
+        286.0813,
+        265.3102,
+        276.1005,
+        269.4487,
+        268.9933
+      ],
+      "median_ms": 269.4487,
+      "min_ms": 265.3102,
+      "max_ms": 286.0813,
+      "mib_per_s": 0.23195509943080075
+    },
+    {
+      "suite": "sha3-256",
+      "input_bytes": 65536,
+      "iterations_per_repeat": 1,
+      "samples_ms": [
+        417.2946,
+        435.3731,
+        416.7486,
+        461.1986,
+        423.3213
+      ],
+      "median_ms": 423.3213,
+      "min_ms": 416.7486,
+      "max_ms": 461.1986,
+      "mib_per_s": 0.14764199202827732
+    }
+  ],
+  "trees": [
+    {
+      "suite": "sha256",
+      "n": 1,
+      "message_bytes": 32,
+      "capacity": 1,
+      "commit": {
+        "iterations_per_repeat": 1,
+        "samples_ms": [
+          1.1079,
+          1.4698,
+          1.2135,
+          1.3936,
+          0.7844
+        ],
+        "median_ms": 1.2135,
+        "min_ms": 0.7844,
+        "max_ms": 1.4698
+      },
+      "open": {
+        "iterations_per_repeat": 1000,
+        "samples_ms": [
+          0.0024759,
+          0.0034641999999999997,
+          0.0023448,
+          0.0030367,
+          0.0028751999999999996
+        ],
+        "median_ms": 0.0028751999999999996,
+        "min_ms": 0.0023448,
+        "max_ms": 0.0034641999999999997
+      },
+      "verify": {
+        "iterations_per_repeat": 20,
+        "samples_ms": [
+          1.128695,
+          1.106685,
+          1.052325,
+          1.05449,
+          1.08784
+        ],
+        "median_ms": 1.08784,
+        "min_ms": 1.052325,
+        "max_ms": 1.128695
+      },
+      "path_hashes": 0,
+      "path_bytes": 0,
+      "opening_binary_bytes": 81,
+      "tree_hash_payload_bytes": 32,
+      "salt_payload_bytes": 32,
+      "message_payload_bytes": 32,
+      "commit_hash_calls": 2,
+      "verify_hash_calls": 2
+    },
+    {
+      "suite": "sha3-256",
+      "n": 1,
+      "message_bytes": 32,
+      "capacity": 1,
+      "commit": {
+        "iterations_per_repeat": 1,
+        "samples_ms": [
+          1.8221,
+          2.366,
+          2.4891,
+          2.3115,
+          2.4587
+        ],
+        "median_ms": 2.366,
+        "min_ms": 1.8221,
+        "max_ms": 2.4891
+      },
+      "open": {
+        "iterations_per_repeat": 1000,
+        "samples_ms": [
+          0.0031655999999999998,
+          0.0026016999999999998,
+          0.0026825,
+          0.0025350999999999998,
+          0.0025675
+        ],
+        "median_ms": 0.0026016999999999998,
+        "min_ms": 0.0025350999999999998,
+        "max_ms": 0.0031655999999999998
+      },
+      "verify": {
+        "iterations_per_repeat": 20,
+        "samples_ms": [
+          1.769915,
+          1.73149,
+          1.730505,
+          1.83258,
+          1.60656
+        ],
+        "median_ms": 1.73149,
+        "min_ms": 1.60656,
+        "max_ms": 1.83258
+      },
+      "path_hashes": 0,
+      "path_bytes": 0,
+      "opening_binary_bytes": 81,
+      "tree_hash_payload_bytes": 32,
+      "salt_payload_bytes": 32,
+      "message_payload_bytes": 32,
+      "commit_hash_calls": 2,
+      "verify_hash_calls": 2
+    },
+    {
+      "suite": "sha256",
+      "n": 3,
+      "message_bytes": 32,
+      "capacity": 4,
+      "commit": {
+        "iterations_per_repeat": 1,
+        "samples_ms": [
+          3.6965,
+          3.5097,
+          3.4358,
+          3.6517,
+          3.94
+        ],
+        "median_ms": 3.6517,
+        "min_ms": 3.4358,
+        "max_ms": 3.94
+      },
+      "open": {
+        "iterations_per_repeat": 1000,
+        "samples_ms": [
+          0.0030161999999999997,
+          0.0032541,
+          0.00401,
+          0.0038919000000000002,
+          0.0037668000000000003
+        ],
+        "median_ms": 0.0037668000000000003,
+        "min_ms": 0.0030161999999999997,
+        "max_ms": 0.00401
+      },
+      "verify": {
+        "iterations_per_repeat": 20,
+        "samples_ms": [
+          2.14635,
+          2.0383,
+          2.056515,
+          2.108165,
+          2.058595
+        ],
+        "median_ms": 2.058595,
+        "min_ms": 2.0383,
+        "max_ms": 2.14635
+      },
+      "path_hashes": 2,
+      "path_bytes": 64,
+      "opening_binary_bytes": 145,
+      "tree_hash_payload_bytes": 224,
+      "salt_payload_bytes": 96,
+      "message_payload_bytes": 96,
+      "commit_hash_calls": 8,
+      "verify_hash_calls": 4
+    },
+    {
+      "suite": "sha3-256",
+      "n": 3,
+      "message_bytes": 32,
+      "capacity": 4,
+      "commit": {
+        "iterations_per_repeat": 1,
+        "samples_ms": [
+          7.0099,
+          6.4685,
+          6.327,
+          7.8929,
+          6.7228
+        ],
+        "median_ms": 6.7228,
+        "min_ms": 6.327,
+        "max_ms": 7.8929
+      },
+      "open": {
+        "iterations_per_repeat": 1000,
+        "samples_ms": [
+          0.00347,
+          0.0034083000000000004,
+          0.0034753,
+          0.0035326999999999997,
+          0.0036049000000000003
+        ],
+        "median_ms": 0.0034753,
+        "min_ms": 0.0034083000000000004,
+        "max_ms": 0.0036049000000000003
+      },
+      "verify": {
+        "iterations_per_repeat": 20,
+        "samples_ms": [
+          3.789875,
+          3.287725,
+          4.287025,
+          4.64622,
+          3.51721
+        ],
+        "median_ms": 3.789875,
+        "min_ms": 3.287725,
+        "max_ms": 4.64622
+      },
+      "path_hashes": 2,
+      "path_bytes": 64,
+      "opening_binary_bytes": 145,
+      "tree_hash_payload_bytes": 224,
+      "salt_payload_bytes": 96,
+      "message_payload_bytes": 96,
+      "commit_hash_calls": 8,
+      "verify_hash_calls": 4
+    },
+    {
+      "suite": "sha256",
+      "n": 16,
+      "message_bytes": 32,
+      "capacity": 16,
+      "commit": {
+        "iterations_per_repeat": 1,
+        "samples_ms": [
+          17.0526,
+          17.2696,
+          17.8759,
+          16.4823,
+          17.4724
+        ],
+        "median_ms": 17.2696,
+        "min_ms": 16.4823,
+        "max_ms": 17.8759
+      },
+      "open": {
+        "iterations_per_repeat": 1000,
+        "samples_ms": [
+          0.0038821999999999997,
+          0.0038376,
+          0.0039324,
+          0.0037253,
+          0.0034949
+        ],
+        "median_ms": 0.0038376,
+        "min_ms": 0.0034949,
+        "max_ms": 0.0039324
+      },
+      "verify": {
+        "iterations_per_repeat": 20,
+        "samples_ms": [
+          2.908025,
+          3.42397,
+          3.38216,
+          2.840035,
+          2.96596
+        ],
+        "median_ms": 2.96596,
+        "min_ms": 2.840035,
+        "max_ms": 3.42397
+      },
+      "path_hashes": 4,
+      "path_bytes": 128,
+      "opening_binary_bytes": 209,
+      "tree_hash_payload_bytes": 992,
+      "salt_payload_bytes": 512,
+      "message_payload_bytes": 512,
+      "commit_hash_calls": 32,
+      "verify_hash_calls": 6
+    },
+    {
+      "suite": "sha3-256",
+      "n": 16,
+      "message_bytes": 32,
+      "capacity": 16,
+      "commit": {
+        "iterations_per_repeat": 1,
+        "samples_ms": [
+          23.79,
+          28.4838,
+          33.847,
+          33.6843,
+          27.4999
+        ],
+        "median_ms": 28.4838,
+        "min_ms": 23.79,
+        "max_ms": 33.847
+      },
+      "open": {
+        "iterations_per_repeat": 1000,
+        "samples_ms": [
+          0.0055288,
+          0.0041177,
+          0.0037729,
+          0.0037414,
+          0.0037846999999999998
+        ],
+        "median_ms": 0.0037846999999999998,
+        "min_ms": 0.0037414,
+        "max_ms": 0.0055288
+      },
+      "verify": {
+        "iterations_per_repeat": 20,
+        "samples_ms": [
+          5.03942,
+          5.223815,
+          4.821395,
+          5.0847,
+          5.310865
+        ],
+        "median_ms": 5.0847,
+        "min_ms": 4.821395,
+        "max_ms": 5.310865
+      },
+      "path_hashes": 4,
+      "path_bytes": 128,
+      "opening_binary_bytes": 209,
+      "tree_hash_payload_bytes": 992,
+      "salt_payload_bytes": 512,
+      "message_payload_bytes": 512,
+      "commit_hash_calls": 32,
+      "verify_hash_calls": 6
+    },
+    {
+      "suite": "sha256",
+      "n": 64,
+      "message_bytes": 32,
+      "capacity": 64,
+      "commit": {
+        "iterations_per_repeat": 1,
+        "samples_ms": [
+          75.8122,
+          72.5323,
+          58.5768,
+          71.5947,
+          71.0032
+        ],
+        "median_ms": 71.5947,
+        "min_ms": 58.5768,
+        "max_ms": 75.8122
+      },
+      "open": {
+        "iterations_per_repeat": 1000,
+        "samples_ms": [
+          0.0039785,
+          0.0042537,
+          0.0040133,
+          0.0037756,
+          0.0040162
+        ],
+        "median_ms": 0.0040133,
+        "min_ms": 0.0037756,
+        "max_ms": 0.0042537
+      },
+      "verify": {
+        "iterations_per_repeat": 20,
+        "samples_ms": [
+          3.860785,
+          3.9406,
+          4.004965,
+          4.06587,
+          4.70217
+        ],
+        "median_ms": 4.004965,
+        "min_ms": 3.860785,
+        "max_ms": 4.70217
+      },
+      "path_hashes": 6,
+      "path_bytes": 192,
+      "opening_binary_bytes": 273,
+      "tree_hash_payload_bytes": 4064,
+      "salt_payload_bytes": 2048,
+      "message_payload_bytes": 2048,
+      "commit_hash_calls": 128,
+      "verify_hash_calls": 8
+    },
+    {
+      "suite": "sha3-256",
+      "n": 64,
+      "message_bytes": 32,
+      "capacity": 64,
+      "commit": {
+        "iterations_per_repeat": 1,
+        "samples_ms": [
+          121.6745,
+          119.6981,
+          118.5487,
+          115.2737,
+          104.8682
+        ],
+        "median_ms": 118.5487,
+        "min_ms": 104.8682,
+        "max_ms": 121.6745
+      },
+      "open": {
+        "iterations_per_repeat": 1000,
+        "samples_ms": [
+          0.0038006999999999997,
+          0.0048831000000000005,
+          0.0039808000000000005,
+          0.005641,
+          0.0048431
+        ],
+        "median_ms": 0.0048431,
+        "min_ms": 0.0038006999999999997,
+        "max_ms": 0.005641
+      },
+      "verify": {
+        "iterations_per_repeat": 20,
+        "samples_ms": [
+          6.622935,
+          6.85117,
+          6.551555,
+          6.634635,
+          6.542865
+        ],
+        "median_ms": 6.622935,
+        "min_ms": 6.542865,
+        "max_ms": 6.85117
+      },
+      "path_hashes": 6,
+      "path_bytes": 192,
+      "opening_binary_bytes": 273,
+      "tree_hash_payload_bytes": 4064,
+      "salt_payload_bytes": 2048,
+      "message_payload_bytes": 2048,
+      "commit_hash_calls": 128,
+      "verify_hash_calls": 8
+    },
+    {
+      "suite": "sha256",
+      "n": 256,
+      "message_bytes": 32,
+      "capacity": 256,
+      "commit": {
+        "iterations_per_repeat": 1,
+        "samples_ms": [
+          283.3598,
+          277.9534,
+          282.7614,
+          267.0,
+          288.7546
+        ],
+        "median_ms": 282.7614,
+        "min_ms": 267.0,
+        "max_ms": 288.7546
+      },
+      "open": {
+        "iterations_per_repeat": 1000,
+        "samples_ms": [
+          0.0049904,
+          0.0050638,
+          0.0047048,
+          0.0060677,
+          0.0055842
+        ],
+        "median_ms": 0.0050638,
+        "min_ms": 0.0047048,
+        "max_ms": 0.0060677
+      },
+      "verify": {
+        "iterations_per_repeat": 20,
+        "samples_ms": [
+          5.23158,
+          5.97989,
+          5.92872,
+          4.85791,
+          5.511325
+        ],
+        "median_ms": 5.511325,
+        "min_ms": 4.85791,
+        "max_ms": 5.97989
+      },
+      "path_hashes": 8,
+      "path_bytes": 256,
+      "opening_binary_bytes": 337,
+      "tree_hash_payload_bytes": 16352,
+      "salt_payload_bytes": 8192,
+      "message_payload_bytes": 8192,
+      "commit_hash_calls": 512,
+      "verify_hash_calls": 10
+    },
+    {
+      "suite": "sha3-256",
+      "n": 256,
+      "message_bytes": 32,
+      "capacity": 256,
+      "commit": {
+        "iterations_per_repeat": 1,
+        "samples_ms": [
+          434.6466,
+          481.4191,
+          444.697,
+          475.8858,
+          426.1198
+        ],
+        "median_ms": 444.697,
+        "min_ms": 426.1198,
+        "max_ms": 481.4191
+      },
+      "open": {
+        "iterations_per_repeat": 1000,
+        "samples_ms": [
+          0.0043818,
+          0.004579,
+          0.0043335,
+          0.0045566,
+          0.0042454
+        ],
+        "median_ms": 0.0043818,
+        "min_ms": 0.0042454,
+        "max_ms": 0.004579
+      },
+      "verify": {
+        "iterations_per_repeat": 20,
+        "samples_ms": [
+          8.6628,
+          9.050105,
+          8.812095,
+          8.18399,
+          8.6216
+        ],
+        "median_ms": 8.6628,
+        "min_ms": 8.18399,
+        "max_ms": 9.050105
+      },
+      "path_hashes": 8,
+      "path_bytes": 256,
+      "opening_binary_bytes": 337,
+      "tree_hash_payload_bytes": 16352,
+      "salt_payload_bytes": 8192,
+      "message_payload_bytes": 8192,
+      "commit_hash_calls": 512,
+      "verify_hash_calls": 10
+    },
+    {
+      "suite": "sha256",
+      "n": 257,
+      "message_bytes": 32,
+      "capacity": 512,
+      "commit": {
+        "iterations_per_repeat": 1,
+        "samples_ms": [
+          474.8075,
+          495.6997,
+          476.5731,
+          500.451,
+          551.9181
+        ],
+        "median_ms": 495.6997,
+        "min_ms": 474.8075,
+        "max_ms": 551.9181
+      },
+      "open": {
+        "iterations_per_repeat": 1000,
+        "samples_ms": [
+          0.0058723000000000004,
+          0.0055413,
+          0.0052486,
+          0.0054993,
+          0.0048552
+        ],
+        "median_ms": 0.0054993,
+        "min_ms": 0.0048552,
+        "max_ms": 0.0058723000000000004
+      },
+      "verify": {
+        "iterations_per_repeat": 20,
+        "samples_ms": [
+          5.754635,
+          5.870905,
+          6.409295,
+          6.55345,
+          6.24174
+        ],
+        "median_ms": 6.24174,
+        "min_ms": 5.754635,
+        "max_ms": 6.55345
+      },
+      "path_hashes": 9,
+      "path_bytes": 288,
+      "opening_binary_bytes": 369,
+      "tree_hash_payload_bytes": 32736,
+      "salt_payload_bytes": 8224,
+      "message_payload_bytes": 8224,
+      "commit_hash_calls": 1024,
+      "verify_hash_calls": 11
+    },
+    {
+      "suite": "sha3-256",
+      "n": 257,
+      "message_bytes": 32,
+      "capacity": 512,
+      "commit": {
+        "iterations_per_repeat": 1,
+        "samples_ms": [
+          944.2102,
+          906.6733,
+          881.6173,
+          925.2445,
+          921.5259
+        ],
+        "median_ms": 921.5259,
+        "min_ms": 881.6173,
+        "max_ms": 944.2102
+      },
+      "open": {
+        "iterations_per_repeat": 1000,
+        "samples_ms": [
+          0.0028408,
+          0.0028125999999999997,
+          0.0027546,
+          0.0028233000000000004,
+          0.0028928
+        ],
+        "median_ms": 0.0028233000000000004,
+        "min_ms": 0.0027546,
+        "max_ms": 0.0028928
+      },
+      "verify": {
+        "iterations_per_repeat": 20,
+        "samples_ms": [
+          5.28483,
+          5.657865,
+          5.44328,
+          5.33242,
+          5.339305
+        ],
+        "median_ms": 5.339305,
+        "min_ms": 5.28483,
+        "max_ms": 5.657865
+      },
+      "path_hashes": 9,
+      "path_bytes": 288,
+      "opening_binary_bytes": 369,
+      "tree_hash_payload_bytes": 32736,
+      "salt_payload_bytes": 8224,
+      "message_payload_bytes": 8224,
+      "commit_hash_calls": 1024,
+      "verify_hash_calls": 11
+    },
+    {
+      "suite": "sha256",
+      "n": 1024,
+      "message_bytes": 32,
+      "capacity": 1024,
+      "commit": {
+        "iterations_per_repeat": 1,
+        "samples_ms": [
+          1192.3745,
+          1058.0841,
+          1117.7251,
+          1165.9538,
+          1091.4215
+        ],
+        "median_ms": 1117.7251,
+        "min_ms": 1058.0841,
+        "max_ms": 1192.3745
+      },
+      "open": {
+        "iterations_per_repeat": 1000,
+        "samples_ms": [
+          0.0049657,
+          0.0065858,
+          0.005603,
+          0.0053397,
+          0.005203800000000001
+        ],
+        "median_ms": 0.0053397,
+        "min_ms": 0.0049657,
+        "max_ms": 0.0065858
+      },
+      "verify": {
+        "iterations_per_repeat": 20,
+        "samples_ms": [
+          5.820495,
+          5.96756,
+          6.27881,
+          6.292135,
+          6.60459
+        ],
+        "median_ms": 6.27881,
+        "min_ms": 5.820495,
+        "max_ms": 6.60459
+      },
+      "path_hashes": 10,
+      "path_bytes": 320,
+      "opening_binary_bytes": 401,
+      "tree_hash_payload_bytes": 65504,
+      "salt_payload_bytes": 32768,
+      "message_payload_bytes": 32768,
+      "commit_hash_calls": 2048,
+      "verify_hash_calls": 12
+    },
+    {
+      "suite": "sha3-256",
+      "n": 1024,
+      "message_bytes": 32,
+      "capacity": 1024,
+      "commit": {
+        "iterations_per_repeat": 1,
+        "samples_ms": [
+          1700.1386,
+          1695.0811,
+          1782.0844,
+          1703.7434,
+          1701.9623
+        ],
+        "median_ms": 1701.9623,
+        "min_ms": 1695.0811,
+        "max_ms": 1782.0844
+      },
+      "open": {
+        "iterations_per_repeat": 1000,
+        "samples_ms": [
+          0.0050344,
+          0.0049269,
+          0.0052266000000000005,
+          0.0047618,
+          0.0047608
+        ],
+        "median_ms": 0.0049269,
+        "min_ms": 0.0047608,
+        "max_ms": 0.0052266000000000005
+      },
+      "verify": {
+        "iterations_per_repeat": 20,
+        "samples_ms": [
+          10.04011,
+          9.85052,
+          10.52106,
+          9.844075,
+          10.04653
+        ],
+        "median_ms": 10.04011,
+        "min_ms": 9.844075,
+        "max_ms": 10.52106
+      },
+      "path_hashes": 10,
+      "path_bytes": 320,
+      "opening_binary_bytes": 401,
+      "tree_hash_payload_bytes": 65504,
+      "salt_payload_bytes": 32768,
+      "message_payload_bytes": 32768,
+      "commit_hash_calls": 2048,
+      "verify_hash_calls": 12
+    },
+    {
+      "suite": "sha256",
+      "n": 4096,
+      "message_bytes": 32,
+      "capacity": 4096,
+      "commit": {
+        "iterations_per_repeat": 1,
+        "samples_ms": [
+          4277.1021,
+          4282.1701,
+          4298.4835,
+          4353.3832,
+          4356.4877
+        ],
+        "median_ms": 4298.4835,
+        "min_ms": 4277.1021,
+        "max_ms": 4356.4877
+      },
+      "open": {
+        "iterations_per_repeat": 1000,
+        "samples_ms": [
+          0.00536,
+          0.0052008,
+          0.0052668,
+          0.0060371999999999995,
+          0.0054996
+        ],
+        "median_ms": 0.00536,
+        "min_ms": 0.0052008,
+        "max_ms": 0.0060371999999999995
+      },
+      "verify": {
+        "iterations_per_repeat": 20,
+        "samples_ms": [
+          7.195735,
+          7.184615,
+          7.32019,
+          7.63618,
+          7.17257
+        ],
+        "median_ms": 7.195735,
+        "min_ms": 7.17257,
+        "max_ms": 7.63618
+      },
+      "path_hashes": 12,
+      "path_bytes": 384,
+      "opening_binary_bytes": 465,
+      "tree_hash_payload_bytes": 262112,
+      "salt_payload_bytes": 131072,
+      "message_payload_bytes": 131072,
+      "commit_hash_calls": 8192,
+      "verify_hash_calls": 14
+    },
+    {
+      "suite": "sha3-256",
+      "n": 4096,
+      "message_bytes": 32,
+      "capacity": 4096,
+      "commit": {
+        "iterations_per_repeat": 1,
+        "samples_ms": [
+          6844.1022,
+          6921.3227,
+          6879.726,
+          6781.0052,
+          6861.8467
+        ],
+        "median_ms": 6861.8467,
+        "min_ms": 6781.0052,
+        "max_ms": 6921.3227
+      },
+      "open": {
+        "iterations_per_repeat": 1000,
+        "samples_ms": [
+          0.0050698,
+          0.005397399999999999,
+          0.0051162,
+          0.0053141,
+          0.0071479
+        ],
+        "median_ms": 0.0053141,
+        "min_ms": 0.0050698,
+        "max_ms": 0.0071479
+      },
+      "verify": {
+        "iterations_per_repeat": 20,
+        "samples_ms": [
+          11.43714,
+          11.66671,
+          11.66261,
+          11.737115,
+          11.847105
+        ],
+        "median_ms": 11.66671,
+        "min_ms": 11.43714,
+        "max_ms": 11.847105
+      },
+      "path_hashes": 12,
+      "path_bytes": 384,
+      "opening_binary_bytes": 465,
+      "tree_hash_payload_bytes": 262112,
+      "salt_payload_bytes": 131072,
+      "message_payload_bytes": 131072,
+      "commit_hash_calls": 8192,
+      "verify_hash_calls": 14
+    }
+  ]
+}

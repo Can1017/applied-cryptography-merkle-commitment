@@ -1,0 +1,39 @@
+{
+  "figures": [
+    {
+      "number": "4-1",
+      "name": "protocol_workflow",
+      "section": "4.1",
+      "source": "MTC1 specification",
+      "generator": "scripts/build_figures.py"
+    },
+    {
+      "number": "4-2",
+      "name": "guide_merkle_path",
+      "section": "4.4",
+      "source": "three-leaf example",
+      "generator": "scripts/build_guide.py"
+    },
+    {
+      "number": "6-1",
+      "name": "project_architecture",
+      "section": "6.1",
+      "source": "src/ module responsibilities",
+      "generator": "scripts/build_figures.py"
+    },
+    {
+      "number": "7-1",
+      "name": "hash_node_cost",
+      "section": "7.4",
+      "source": "results/benchmark.json",
+      "generator": "scripts/build_figures.py"
+    },
+    {
+      "number": "7-2",
+      "name": "merkle_scaling",
+      "section": "7.5",
+      "source": "results/benchmark.json",
+      "generator": "scripts/build_report.py"
+    }
+  ]
+}

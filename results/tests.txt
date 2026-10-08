@@ -1,0 +1,28 @@
+test_binary_reject_truncation_extra_bytes_and_lengths (test_codec_cli.CodecTests.test_binary_reject_truncation_extra_bytes_and_lengths) ... ok
+test_cli_end_to_end_and_rejection (test_codec_cli.CodecTests.test_cli_end_to_end_and_rejection) ... ok
+test_private_state_corruption (test_codec_cli.CodecTests.test_private_state_corruption) ... ok
+test_reject_noncanonical_json (test_codec_cli.CodecTests.test_reject_noncanonical_json) ... ok
+test_roundtrip (test_codec_cli.CodecTests.test_roundtrip) ... ok
+test_writer_rejects_unreadable_oversize_output_before_creation (test_codec_cli.CodecTests.test_writer_rejects_unreadable_oversize_output_before_creation) ... ok
+test_fips_examples (test_hashes.HashTests.test_fips_examples) ... ok
+test_nist_sha256_long (test_hashes.HashTests.test_nist_sha256_long) ... ok
+test_nist_sha256_short (test_hashes.HashTests.test_nist_sha256_short) ... ok
+test_nist_sha3_long (test_hashes.HashTests.test_nist_sha3_long) ... ok
+test_nist_sha3_short (test_hashes.HashTests.test_nist_sha3_short) ... ok
+test_reject_implicit_encoding (test_hashes.HashTests.test_reject_implicit_encoding) ... ok
+test_all_positions_and_shapes (test_merkle.MerkleTests.test_all_positions_and_shapes) ... ok
+test_duplicate_messages_have_position_bound_leaves (test_merkle.MerkleTests.test_duplicate_messages_have_position_bound_leaves) ... ok
+test_empty_vector (test_merkle.MerkleTests.test_empty_vector) ... ok
+test_fresh_randomness_and_requested_size (test_merkle.MerkleTests.test_fresh_randomness_and_requested_size) ... ok
+test_full_opening_rejects_modification (test_merkle.MerkleTests.test_full_opening_rejects_modification) ... ok
+test_input_validation (test_merkle.MerkleTests.test_input_validation) ... ok
+test_manual_three_leaf_construction (test_merkle.MerkleTests.test_manual_three_leaf_construction) ... ok
+test_order_binding (test_merkle.MerkleTests.test_order_binding) ... ok
+test_singleton_has_no_siblings (test_merkle.MerkleTests.test_singleton_has_no_siblings) ... ok
+test_size_binding_prevents_duplicate_tail_ambiguity (test_merkle.MerkleTests.test_size_binding_prevents_duplicate_tail_ambiguity) ... ok
+test_tampering_every_authenticated_component (test_merkle.MerkleTests.test_tampering_every_authenticated_component) ... ok
+
+----------------------------------------------------------------------
+Ran 23 tests in 15.028s
+
+OK

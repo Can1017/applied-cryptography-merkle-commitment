@@ -1,0 +1,28 @@
+{
+  "algorithm": "self-implemented SHA-256 in src/hashes.py",
+  "purpose": "record the delivered source revision, not an independent correctness oracle",
+  "files": {
+    "src/__init__.py": "6cc34b88c9cfe82e47f20d3f20ad18d9cb682158788808a45e449f790193fc57",
+    "src/cli.py": "2863ca1826a82f024320fcc14e322fff1e7fe294d6dc3ebfb96314a12df9ca7e",
+    "src/codec.py": "3a095caaa9291a64aac7b9ddf51adf3fee897e546fa24a1c9b0302f18f3b087e",
+    "src/hashes.py": "eea420850d4a91836a7f8ac5e140b81abdf6ef6616ea1b7c49fdf9c1b06e69f5",
+    "src/merkle.py": "87db839892c8f65fa3defd79e6a30f6fa85909e5d1c049ccb4a609b73b825da5",
+    "tests/__init__.py": "9fdb7b67f3c0a8c28e94c4c8b0ee7da179566c2894f81943432691d7bf2a296a",
+    "tests/test_codec_cli.py": "293466c637655a8fca2835cde060b45c437cd9e102db4bc4da4f5007b61d032f",
+    "tests/test_hashes.py": "40ac8aac00e422ddd19b96ed8782c35e47b812d598edfc8773c40631f6fe9934",
+    "tests/test_merkle.py": "2d29b55e4989f8bcb498862fb2504ce9170de6a38c65bf50596a267c75a1c0d5",
+    "tests/vector_loader.py": "0a7ce203431a41757dd68ed0e62c7c600af8427d775b0b022f8dfc74a29be907",
+    "scripts/audit_dependencies.py": "1b4a761641182c08f84acb137acc1d4ab157fc348bcd5c6ea882a2b60c7c0d17",
+    "scripts/benchmark.py": "87d9ddf5cecf74b1ae3abd20ba44d4b79190b33ff2658fb8778e4451c38c7e55",
+    "scripts/build_figures.py": "ce0479f5754cb59fba8ffd9f0428d4ffd519ce48dbe79952c29552ba8480a4e2",
+    "scripts/build_guide.py": "a9ad40435434e857ade929a5c40f5d1055d75b26dd8f22b4dc16d4d2113552f8",
+    "scripts/build_report.py": "3a526df443300b4c08cb2360be5609f7ca800ed1a0596731aec0bf50acc5b2c9",
+    "scripts/check_guide.py": "b55aa967d5b3d5e5feecaa75acec1f4cd957bae9d6c65d0fbde548a356886c12",
+    "scripts/demo.py": "0b4d76429f6f96308b98f83452499c29988e663d2f94737320f6a15413a54f22",
+    "scripts/package_submission.py": "559f148ecbba1882ff69ead17bc47b98872ef273c78d283ae4720278953ddc85",
+    "scripts/prepare_vectors.py": "1301ec1445320fa2138641d6d49889ea71e427677521ee9f95f04c93d4351c1c",
+    "scripts/run_tests.py": "ddc9e9113fa475bac0a01c5641fb2b2c376ddca254437ce915e343828d07db7f",
+    "scripts/security_demo.py": "d90874bb247fff3a722b135104f5fb902d07294c2709bd12fbb02d2a8bfca72f",
+    "scripts/timing_diagnostic.py": "6f0959e2655f072806825365ef76366c210230a1c597172b5ec58fea27a7354b"
+  }
+}

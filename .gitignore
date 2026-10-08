@@ -1,0 +1,25 @@
+__pycache__/
+*.py[cod]
+private.json
+private-*.json
+public.json
+opening.json
+runs/
+
+# Local archives, screenshots and browser inspection output
+*.zip
+.playwright-mcp/
+results/*.png
+results/*.yml
+results/*.log
+
+# Credentials, local settings and private commitment states
+.env
+.env.*
+*.pem
+*.key
+*.p12
+private-state*.json
+*-private.json
+.vscode/
+.idea/

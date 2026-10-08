@@ -1,0 +1,78 @@
+{
+  "reason": "Primary run SHA3 verification at n=257 was faster than n=256 despite one extra hash call.",
+  "method": "same code, 5 repeats of 40 cached verifications; original data retained",
+  "rows": [
+    {
+      "n": 256,
+      "suite": "sha256",
+      "hash_calls": 10,
+      "verify": {
+        "iterations_per_repeat": 40,
+        "samples_ms": [
+          3.31223,
+          3.1916975,
+          3.3531225,
+          3.39932,
+          3.4690725
+        ],
+        "median_ms": 3.3531225,
+        "min_ms": 3.1916975,
+        "max_ms": 3.4690725
+      }
+    },
+    {
+      "n": 256,
+      "suite": "sha3-256",
+      "hash_calls": 10,
+      "verify": {
+        "iterations_per_repeat": 40,
+        "samples_ms": [
+          5.1346975,
+          5.32315,
+          5.2451675,
+          5.059755,
+          5.1426825
+        ],
+        "median_ms": 5.1426825,
+        "min_ms": 5.059755,
+        "max_ms": 5.32315
+      }
+    },
+    {
+      "n": 257,
+      "suite": "sha256",
+      "hash_calls": 11,
+      "verify": {
+        "iterations_per_repeat": 40,
+        "samples_ms": [
+          3.44858,
+          3.3223,
+          3.2880775,
+          3.3679925,
+          3.5160575
+        ],
+        "median_ms": 3.3679925,
+        "min_ms": 3.2880775,
+        "max_ms": 3.5160575
+      }
+    },
+    {
+      "n": 257,
+      "suite": "sha3-256",
+      "hash_calls": 11,
+      "verify": {
+        "iterations_per_repeat": 40,
+        "samples_ms": [
+          9.851725,
+          9.40971,
+          9.576975,
+          10.4170025,
+          9.3975075
+        ],
+        "median_ms": 9.576975,
+        "min_ms": 9.3975075,
+        "max_ms": 10.4170025
+      }
+    }
+  ]
+}

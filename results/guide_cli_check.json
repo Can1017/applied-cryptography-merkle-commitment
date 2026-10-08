@@ -1,0 +1,24 @@
+{
+  "purpose": "Validate learning-guide PowerShell commands",
+  "checks": [
+    {
+      "suite": "sha256",
+      "commit": 0,
+      "open": 0,
+      "valid": 0,
+      "wrong_message": 1,
+      "wrong_index": 1
+    },
+    {
+      "suite": "sha3-256",
+      "commit": 0,
+      "open": 0,
+      "valid": 0,
+      "wrong_message": 1,
+      "wrong_index": 1
+    }
+  ],
+  "utf8_input_passed": true,
+  "sample_messages": "Public teaching examples only",
+  "run_directory": "runs\\guide-check-20260920-233439-821"
+}

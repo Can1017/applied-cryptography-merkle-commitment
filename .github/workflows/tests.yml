@@ -1,0 +1,24 @@
+name: Coursework checks
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify hashes, Merkle commitments and CLI
+        run: python -B -m unittest discover -s tests -v
+      - name: Audit core dependencies
+        run: python -B scripts/audit_dependencies.py
+      - name: Check document structure
+        run: python -B scripts/check_guide.py

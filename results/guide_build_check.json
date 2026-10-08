@@ -1,0 +1,15 @@
+{
+  "document": "Merkle树承诺作业详细说明与代码导读.md",
+  "characters": 40086,
+  "top_level_sections": 18,
+  "source_targets": 15,
+  "code_fragments_from_actual_source": 3,
+  "worked_example_verified": true,
+  "fixed_sample_matches_saved_demo": true,
+  "binary_commitment_bytes": 45,
+  "bob_opening_bytes": 116,
+  "nist_vectors_in_saved_evidence": 366,
+  "html_images_embedded": 4,
+  "references": 17,
+  "performance_data": "existing results/benchmark.json; not rerun by this builder"
+}

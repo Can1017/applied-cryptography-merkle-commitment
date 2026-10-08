@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="560" viewBox="0 0 1000 560" role="img" aria-label="三叶 Merkle 树打开 Bob 的路径">
+<rect width="1000" height="560" fill="white"/>
+<style>text{font-family:"Microsoft YaHei","Noto Sans CJK SC",sans-serif;fill:#172735}.title{font-size:20px;font-weight:600}.small{font-size:15px}.legend{font-size:16px}</style>
+<path d="M140,381 L265,325" fill="none" stroke="#a75a17" stroke-width="2.5"/>
+<path d="M380,381 L265,325" fill="none" stroke="#245e91" stroke-width="2.5"/>
+<path d="M620,381 L735,325" fill="none" stroke="#68747e" stroke-width="2.5" stroke-dasharray="6 5"/>
+<path d="M860,381 L735,325" fill="none" stroke="#68747e" stroke-width="2.5" stroke-dasharray="6 5"/>
+<path d="M265,255 L500,207" fill="none" stroke="#245e91" stroke-width="2.5"/>
+<path d="M735,255 L500,207" fill="none" stroke="#a75a17" stroke-width="2.5"/>
+<path d="M500,137 L500,99" fill="none" stroke="#245e91" stroke-width="2.5"/>
+<rect x="397" y="29" width="206" height="70" rx="5" fill="#eef5fb" stroke="#245e91" stroke-width="1.8"/>
+<text class="title" x="500" y="58" text-anchor="middle">公共承诺 c</text>
+<text class="small" x="500" y="84" text-anchor="middle">Final(n, T)</text>
+<rect x="397" y="137" width="206" height="70" rx="5" fill="#eef5fb" stroke="#245e91" stroke-width="1.8"/>
+<text class="title" x="500" y="166" text-anchor="middle">内部树根 T</text>
+<text class="small" x="500" y="192" text-anchor="middle">Node(N₀₁, N₂₃)</text>
+<rect x="162" y="255" width="206" height="70" rx="5" fill="#eef5fb" stroke="#245e91" stroke-width="1.8"/>
+<text class="title" x="265" y="284" text-anchor="middle">N₀₁</text>
+<text class="small" x="265" y="310" text-anchor="middle">Node(L₀, L₁)</text>
+<rect x="632" y="255" width="206" height="70" rx="5" fill="#fff3e7" stroke="#a75a17" stroke-width="1.8"/>
+<text class="title" x="735" y="284" text-anchor="middle">N₂₃</text>
+<text class="small" x="735" y="310" text-anchor="middle">第二个兄弟摘要</text>
+<rect x="37" y="381" width="206" height="70" rx="5" fill="#fff3e7" stroke="#a75a17" stroke-width="1.8"/>
+<text class="title" x="140" y="410" text-anchor="middle">L₀</text>
+<text class="small" x="140" y="436" text-anchor="middle">第一个兄弟摘要</text>
+<rect x="277" y="381" width="206" height="70" rx="5" fill="#eef5fb" stroke="#245e91" stroke-width="1.8"/>
+<text class="title" x="380" y="410" text-anchor="middle">L₁</text>
+<text class="small" x="380" y="436" text-anchor="middle">从 Bob 与 r₁ 重算</text>
+<rect x="517" y="381" width="206" height="70" rx="5" fill="#f5f6f7" stroke="#68747e" stroke-width="1.8"/>
+<text class="title" x="620" y="410" text-anchor="middle">L₂</text>
+<text class="small" x="620" y="436" text-anchor="middle">Carol 的叶摘要</text>
+<rect x="757" y="381" width="206" height="70" rx="5" fill="#f5f6f7" stroke="#68747e" stroke-width="1.8"/>
+<text class="title" x="860" y="410" text-anchor="middle">P₃</text>
+<text class="small" x="860" y="436" text-anchor="middle">公开填充位置</text>
+<text class="small" x="140" y="474" text-anchor="middle">i = 0</text>
+<text class="small" x="380" y="474" text-anchor="middle">i = 1 目标位置</text>
+<text class="small" x="620" y="474" text-anchor="middle">i = 2</text>
+<text class="small" x="860" y="474" text-anchor="middle">i = 3 填充</text>
+<rect x="145" y="510" width="18" height="18" fill="#eef5fb" stroke="#245e91"/>
+<text class="legend" x="173" y="525">验证者重算</text>
+<rect x="410" y="510" width="18" height="18" fill="#fff3e7" stroke="#a75a17"/>
+<text class="legend" x="438" y="525">证明提供</text>
+<rect x="655" y="510" width="18" height="18" fill="#f5f6f7" stroke="#68747e"/>
+<text class="legend" x="683" y="525">未打开的结构</text>
+</svg>

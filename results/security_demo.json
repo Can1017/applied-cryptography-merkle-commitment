@@ -1,0 +1,30 @@
+{
+  "unsalted_dictionary": {
+    "recovered": "73",
+    "candidates_tried": 74
+  },
+  "public_salt_dictionary": {
+    "recovered": "73",
+    "candidates_tried": 74
+  },
+  "shared_salt_after_one_opening": {
+    "recovered": "73",
+    "candidates_tried": 74
+  },
+  "independent_salt_using_other_leaves_salt": {
+    "candidate_count": 101,
+    "matches": []
+  },
+  "weak_8_bit_salt": {
+    "found": {
+      "salt": 19,
+      "message": "73"
+    },
+    "hash_queries": 1993
+  },
+  "duplicate_tail_naive_roots_equal": true,
+  "duplicate_tail_mtc1_roots_equal": false,
+  "valid_opening_accepted": true,
+  "modified_message_accepted": false,
+  "limitation": "Failure of a restricted guessing attack is not a proof of hiding; see the ROM analysis."
+}

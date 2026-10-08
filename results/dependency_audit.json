@@ -1,0 +1,31 @@
+{
+  "scope": "src/*.py",
+  "core_imports": {
+    "__init__.py": [],
+    "cli.py": [
+      "argparse",
+      "json",
+      "pathlib",
+      "sys",
+      ".codec",
+      ".hashes",
+      ".merkle"
+    ],
+    "codec.py": [
+      "json",
+      "pathlib",
+      ".hashes",
+      ".merkle"
+    ],
+    "hashes.py": [],
+    "merkle.py": [
+      "dataclasses",
+      "secrets",
+      ".hashes"
+    ]
+  },
+  "issues": [],
+  "passed": true,
+  "manual_review": "Digest and Merkle calculations are local arithmetic/byte operations; secrets.token_bytes supplies OS randomness only.",
+  "limit": "AST allowlist is an implementation audit aid, not a security proof or a transitive stdlib audit."
+}

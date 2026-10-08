@@ -1,0 +1,3 @@
+# Optional document rendering only; core implementation and tests need no packages.
+Markdown>=3.7,<4
+matplotlib>=3.8,<4
