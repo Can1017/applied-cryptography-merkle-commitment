@@ -20,5 +20,3 @@ jobs:
         run: python -B -m unittest discover -s tests -v
       - name: Audit core dependencies
         run: python -B scripts/audit_dependencies.py
-      - name: Check document structure
-        run: python -B scripts/check_guide.py

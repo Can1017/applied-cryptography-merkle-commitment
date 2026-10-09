@@ -23,3 +23,7 @@ private-state*.json
 *-private.json
 .vscode/
 .idea/
+
+# Generated document variants are kept out of the coursework submission.
+*.html
+*.template.md

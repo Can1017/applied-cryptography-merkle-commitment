@@ -1,8 +1,10 @@
 # Merkle 树承诺作业详细说明与代码导读
 
+小组成员：李灿、杨赟。
+
 应用密码学第一次作业学习与运行手册
 
-本说明作为课程报告的配套文档，依次介绍调研与设计依据、基本原理、代码结构、运行步骤及实验结果。协议说明对应项目实际实现；调研来源与查看范围记录在核验清单中，性能数据来自已保存的实验记录。文档修订日期为 2026 年 10 月 8 日，基准实验日期为 2026 年 9 月 20 日。
+本说明作为课程报告的配套文档，依次介绍调研与设计依据、基本原理、代码结构、运行步骤及实验结果。协议说明对应项目实际实现；调研来源与查看范围记录在核验清单中，性能数据来自已保存的实验记录。文档内容与项目代码、保存的实验记录保持一致。
 
 正式方案见同目录的《Merkle 树承诺方案设计与安全性分析》。该报告侧重方案规格与安全论证；本说明增加术语解释、逐步算例、函数导读、可复制命令和结果判读。建议第一次阅读先看第 1 至 5 章，再执行第 11 章；需要讲解源码时重点阅读第 7 至 10 章。
 
@@ -83,7 +85,7 @@ SHA-256 依据 FIPS 180-4，SHA3-256 依据 FIPS 202。轮常量和旋转偏移�
 | 排序会改变向量语义 | 保留输入顺序并绑定索引 | `_build`、`verify` |
 | 仅凭轮数无法预测 Python 速度 | 对真实节点长度和整棵树实测 | `scripts/benchmark.py` |
 
-完整来源与查看范围记录在 `research/references-verified.json`。仓库的 `master`、文档的 `latest` 可能变化，记录反映 2026-09-20 的查看结果，不声称已经固定其提交版本。设计决策、标准事实和本机测量是三类不同证据，应分别引用。
+完整来源与查看范围记录在 `research/references-verified.json`。仓库的 `master`、文档的 `latest` 可能变化，记录反映已核验的查看结果，不声称已经固定其提交版本。设计决策、标准事实和本机测量是三类不同证据，应分别引用。
 
 ## 3 基本概念与符号约定
 
@@ -589,14 +591,11 @@ JSON 文件通常更大，因为有字段名、引号、换行和 hex 扩展。�
 | `python scripts/benchmark.py` | 完整性能测量 | `results/benchmark.json` |
 | `python scripts/timing_diagnostic.py` | 单独复测 256、257 叶子附近 | `results/benchmark_diagnostic.json` |
 | `python scripts/audit_dependencies.py` | 核心源码导入和动态执行检查 | `results/dependency_audit.json` |
-| `python scripts/build_report.py` | 按既有数据重建正式报告及性能图 | 正式报告 Markdown、HTML、图像 |
-| `python scripts/build_guide.py` | 按实际源码和既有结果生成本说明 | 本说明 Markdown、HTML、路径示意图 |
-| `python scripts/check_guide.py` | 核对本说明、图像和本地链接 | 只输出核对摘要 |
 | `python scripts/package_submission.py` | 记录源码摘要并打包 | 源码清单与根目录的作业 ZIP |
 
 `prepare_vectors.py` 只负责从官方 ZIP 重新提取数据，不是每次测试都必须运行。交付包已包含实际使用的 `.rsp` 文件；只有需要重新提取时才要准备完整下载包。
 
-核心、测试和基准仅使用 Python 标准库。重建 HTML 需要可选的 Python-Markdown，重画性能图需要可选的 Matplotlib；这些包只参与文档展示，不参与密码计算。
+核心、测试和基准仅使用 Python 标准库。重新绘制性能图时才需要 Matplotlib；它只参与文档展示，不参与密码计算。
 
 ## 11 从解压到验证的完整操作
 
@@ -788,7 +787,7 @@ python scripts/benchmark.py
 python scripts/benchmark.py --max-n 1024 --repeats 3
 ```
 
-但这同样会覆盖 `results/benchmark.json`。这种缩短运行不能直接套入现有正式报告，因为报告写明 5 轮和 4096 叶子；`build_report.py` 会拒绝这些不匹配的数据。要重建完整报告，应重新执行默认完整基准。
+但这同样会覆盖 `results/benchmark.json`。这种缩短运行不能直接套入现有正式报告，因为报告写明 5 轮和 4096 叶子；正式报告不随短基准自动重建；分析时应注明数据口径。要重建完整报告，应重新执行默认完整基准。
 
 若要复测 256、257 叶子附近的波动，运行：
 
@@ -798,18 +797,17 @@ python scripts/timing_diagnostic.py
 
 局部复测只写 `benchmark_diagnostic.json`，不替换主基准。分析时应标注它来自另一轮运行，不将两轮数据选择性拼成一条“更好看”的曲线。
 
-### 12.4 重建文档和提交包
+### 12.4 重新生成图表和提交包
 
-已有 HTML 和图片可以直接阅读，不需要安装文档生成依赖。只有重建时才需要安装可选包；在允许联网安装的环境，可执行：
+两份报告直接以 Markdown 形式阅读。若要重新生成图表，在允许联网安装的环境可安装可选包：
 
 ```powershell
-python -m pip install Markdown matplotlib
-python scripts/build_report.py
-python scripts/build_guide.py
+python -m pip install matplotlib
+python scripts/build_figures.py
 python scripts/package_submission.py
 ```
 
-这些安装仅用于生成文档和图表。不要安装或引入哈希、Merkle Tree 库替换课程实现。重建本说明时会从当前源码提取片段和行号，从结果文件读取表格；若源数据不满足文档口径，生成脚本应直接报错，避免悄悄生成失真的说明。
+这些安装仅用于生成文档和图表。不要安装或引入哈希、Merkle Tree 库替换课程实现。图表脚本从结果文件读取数据；若要更新报告正文，应直接编辑对应 Markdown，并同步检查数据口径。
 
 提交包会包含规定的源码、文档、结果和所需测试数据，排除字节码缓存、页面检查截图以及完整 NIST ZIP。它不收集个人 `runs/` 文件夹，避免把运行时私有状态混入交付物。
 
@@ -865,7 +863,7 @@ python scripts/package_submission.py
 
 弱随机数示例把随机数缩成 1 字节，真值为 19，并按随机数在外层、成绩在内层的顺序枚举。前 19 个随机数各试 101 个消息，再在随机数 19 时试到成绩 73，共 `19×101+74=1993` 次查询，成功恢复秘密。
 
-这解释了为什么不能用很短的随机数、日期或固定编号代替独立高熵随机字节。真实方案使用 32 字节随机数；它的选择与模型中的猜测难度有关，不是根据这个小实验直接测出了 256 位安全性。
+这解释了为什么不能用很短的随机数或固定编号代替独立高熵随机字节。真实方案使用 32 字节随机数；它的选择与模型中的猜测难度有关，不是根据这个小实验直接测出了 256 位安全性。
 
 ### 14.4 末尾复制的结构歧义
 
@@ -903,7 +901,7 @@ Hiding 的论证额外使用随机预言机模型：只要没有查询到含正�
 | CPU | 12th Gen Intel(R) Core(TM) i5-12500H |
 | Python | 3.11.7 / packaged by Anaconda, Inc. / (main, Dec 15 2023, 18:05:47) [MSC v.1916 64 bit (AMD64)] |
 | 系统平台标识 | Windows-10-10.0.26200-SP0 |
-| 基准时间 UTC | 2026-09-20T04:54:47.211816+00:00 |
+| 基准时间 UTC | |
 | 重复次数 | 5 |
 
 微基准直接测本地两个哈希函数在指定输入长度上的成本。树基准使用同一批 32 字节消息。Commit 包括新随机数、哈希与对象分配；Open 只测已经缓存树上的取路径；Verify 包括消息哈希、每一层组合和最终封装。计时不包含 JSON 文件读写和命令行启动。
@@ -974,7 +972,7 @@ n=256 时容量 p=256；n=257 时容量 p=512。建树哈希调用从 2p=512 次
 | SHA3 与在线 Keccak 摘要不同 | 算法后缀不同 | 确认比较对象是 SHA3-256，使用随附 NIST 数据 |
 | 中文或 JSON 解码错误 | 文件不是 UTF-8 或语法不合法 | 用 UTF-8 保存字符串数组；检查引号和逗号 |
 | `serialized JSON exceeds 16 MiB limit` | hex、字段和私有随机数使文件增大 | 缩小输入，或另行设计并验证大文件存储接口 |
-| build_report 拒绝基准数据 | 运行了 3 轮或最大 n 不到 4096 的短基准 | 保存短基准另作分析，恢复默认完整基准再建正式报告 |
+| 短基准与正式数据口径不一致 | 运行了 3 轮或最大 n 不到 4096 的短基准 | 保存短基准另作分析，恢复默认完整基准再建正式报告 |
 | 缺少 markdown 或 matplotlib | 未安装可选文档依赖 | 直接看现成文档，或仅在重建时安装对应包 |
 | 实测速度与报告差异大 | 硬件、解释器、频率、后台负载等不同 | 核对方法和原始样本，不把差异立即判断为计算错误 |
 
@@ -1011,7 +1009,7 @@ n=256 时容量 p=256；n=257 时容量 p=512。建树哈希调用从 2p=512 次
 
 ### 18.1 按问题寻找文件
 
-想检查公式，读正式报告；想理解函数，读本说明第 7 至 10 章并对照 src；想重现结果，读第 11、12 章；想核对数值，直接查看 `results/*.json`；想核查来源，查看 `research/references-verified.json` 的查看范围和访问日期。
+想检查公式，读正式报告；想理解函数，读本说明第 7 至 10 章并对照 src；想重现结果，读第 11、12 章；想核对数值，直接查看 `results/*.json`；想核查来源，查看 `research/references-verified.json` 的查看范围和查看范围。
 
 后续若修改叶子编码、随机数长度、树形或套件编号，就不再只是性能优化：它会改变根和证明协议，需重新考虑版本、兼容性及安全论证。若仅优化某个标准哈希的循环，应保持全部已知答案不变，再比较新旧性能。
 
@@ -1021,68 +1019,68 @@ n=256 时容量 p=256；n=257 时容量 p=512。建树哈希调用从 2p=512 次
 
 <a id="ref-r1"></a>
 
-**R1** Ben Laurie, Eran Messeri, Rob Stradling. [RFC 9162 Certificate Transparency Version 2.0](https://www.rfc-editor.org/rfc/rfc9162.html). 查看范围：2.1.1–2.1.4。访问日期：2026-09-20。
+**R1** Ben Laurie, Eran Messeri, Rob Stradling. [RFC 9162 Certificate Transparency Version 2.0](https://www.rfc-editor.org/rfc/rfc9162.html). 查看范围：2.1.1–2.1.4。
 
 <a id="ref-r2"></a>
 
-**R2** Bitcoin Core developers. [Bitcoin Core src/consensus/merkle.cpp](https://github.com/bitcoin/bitcoin/blob/master/src/consensus/merkle.cpp). 查看范围：ComputeMerkleRoot and CVE-2012-2459 explanatory comments。访问日期：2026-09-20。
+**R2** Bitcoin Core developers. [Bitcoin Core src/consensus/merkle.cpp](https://github.com/bitcoin/bitcoin/blob/master/src/consensus/merkle.cpp). 查看范围：ComputeMerkleRoot and CVE-2012-2459 explanatory comments。
 
 <a id="ref-r3"></a>
 
-**R3** OpenZeppelin. [OpenZeppelin merkle-tree](https://github.com/OpenZeppelin/merkle-tree). 查看范围：Standard Merkle Trees, Leaf Hash, Leaf ordering; also inspected src/core.ts。访问日期：2026-09-20。
+**R3** OpenZeppelin. [OpenZeppelin merkle-tree](https://github.com/OpenZeppelin/merkle-tree). 查看范围：Standard Merkle Trees, Leaf Hash, Leaf ordering; also inspected src/core.ts。
 
 <a id="ref-r4"></a>
 
-**R4** pymerkle project. [pymerkle 6.1.0 documentation](https://pymerkle.readthedocs.io/en/latest/). 查看范围：Security, Topology, Inclusion proof, Consistency proof。访问日期：2026-09-20。
+**R4** pymerkle project. [pymerkle 6.1.0 documentation](https://pymerkle.readthedocs.io/en/latest/). 查看范围：Security, Topology, Inclusion proof, Consistency proof。
 
 <a id="ref-r5"></a>
 
-**R5** ethereum.org contributors. [Merkle Patricia Trie](https://ethereum.org/developers/docs/data-structures-and-encoding/patricia-merkle-trie/). 查看范围：Trie structure and node encoding overview。访问日期：2026-09-20。
+**R5** ethereum.org contributors. [Merkle Patricia Trie](https://ethereum.org/developers/docs/data-structures-and-encoding/patricia-merkle-trie/). 查看范围：Trie structure and node encoding overview。
 
 <a id="ref-r6"></a>
 
-**R6** Dario Catalano, Dario Fiore. [Vector Commitments and their Applications](https://eprint.iacr.org/2011/495). 查看范围：Abstract and publication metadata。访问日期：2026-09-20。
+**R6** Dario Catalano, Dario Fiore. [Vector Commitments and their Applications](https://eprint.iacr.org/2011/495). 查看范围：Abstract and publication metadata。
 
 <a id="ref-r7"></a>
 
-**R7** NIST. [FIPS PUB 180-4 Secure Hash Standard](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.180-4.pdf). 查看范围：4.1.2, 4.2.2, 5.1.1, 5.3.3, 6.2; SHA-512/256 overview。访问日期：2026-09-20。
+**R7** NIST. [FIPS PUB 180-4 Secure Hash Standard](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.180-4.pdf). 查看范围：4.1.2, 4.2.2, 5.1.1, 5.3.3, 6.2; SHA-512/256 overview。
 
 <a id="ref-r8"></a>
 
-**R8** NIST. [FIPS PUB 202 SHA-3 Standard Permutation-Based Hash and Extendable-Output Functions](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.202.pdf). 查看范围：Keccak-p, sponge, padding and SHA3-256 definition。访问日期：2026-09-20。
+**R8** NIST. [FIPS PUB 202 SHA-3 Standard Permutation-Based Hash and Extendable-Output Functions](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.202.pdf). 查看范围：Keccak-p, sponge, padding and SHA3-256 definition。
 
 <a id="ref-r9"></a>
 
-**R9** NIST CSRC. [Hash Functions](https://csrc.nist.gov/projects/hash-functions). 查看范围：Collision resistance strengths and SHA-1 transition discussion。访问日期：2026-09-20。
+**R9** NIST CSRC. [Hash Functions](https://csrc.nist.gov/projects/hash-functions). 查看范围：Collision resistance strengths and SHA-1 transition discussion。
 
 <a id="ref-r10"></a>
 
-**R10** Markku-Juhani O. Saarinen, Jean-Philippe Aumasson. [RFC 7693 The BLAKE2 Cryptographic Hash and Message Authentication Code](https://www.rfc-editor.org/rfc/rfc7693.html). 查看范围：Algorithm variants, parameters and data organization。访问日期：2026-09-20。
+**R10** Markku-Juhani O. Saarinen, Jean-Philippe Aumasson. [RFC 7693 The BLAKE2 Cryptographic Hash and Message Authentication Code](https://www.rfc-editor.org/rfc/rfc7693.html). 查看范围：Algorithm variants, parameters and data organization。
 
 <a id="ref-r11"></a>
 
-**R11** BLAKE3 team. [BLAKE3 specifications and design rationale](https://github.com/BLAKE3-team/BLAKE3-specs). 查看范围：Specification repository and blake3.tex tree and SIMD discussion。访问日期：2026-09-20。
+**R11** BLAKE3 team. [BLAKE3 specifications and design rationale](https://github.com/BLAKE3-team/BLAKE3-specs). 查看范围：Specification repository and blake3.tex tree and SIMD discussion。
 
 <a id="ref-r12"></a>
 
-**R12** Lorenzo Grassi, Dmitry Khovratovich, Christian Rechberger, Arnab Roy, Markus Schofnegger. [Poseidon A New Hash Function for Zero-Knowledge Proof Systems](https://eprint.iacr.org/2019/458). 查看范围：Abstract and metadata。访问日期：2026-09-20。
+**R12** Lorenzo Grassi, Dmitry Khovratovich, Christian Rechberger, Arnab Roy, Markus Schofnegger. [Poseidon A New Hash Function for Zero-Knowledge Proof Systems](https://eprint.iacr.org/2019/458). 查看范围：Abstract and metadata。
 
 <a id="ref-r13"></a>
 
-**R13** Purdue University CS 555 course materials. [CS 555 Topic 14 Random Oracle Model and Hashing Applications](https://www.cs.purdue.edu/homes/jblocki/courses/555_Spring17/slides/Lecture14.pdf). 查看范围：Slides 5–12 and 18–24。访问日期：2026-09-20。
+**R13** Purdue University CS 555 course materials. [CS 555 Topic 14 Random Oracle Model and Hashing Applications](https://www.cs.purdue.edu/homes/jblocki/courses/555_Spring17/slides/Lecture14.pdf). 查看范围：Slides 5–12 and 18–24。
 
 <a id="ref-r14"></a>
 
-**R14** NIST CSRC. [Cryptographic Algorithm Validation Program Secure Hashing](https://csrc.nist.gov/projects/cryptographic-algorithm-validation-program/secure-hashing). 查看范围：Byte-oriented SHA and SHA-3 response files。访问日期：2026-09-20。
+**R14** NIST CSRC. [Cryptographic Algorithm Validation Program Secure Hashing](https://csrc.nist.gov/projects/cryptographic-algorithm-validation-program/secure-hashing). 查看范围：Byte-oriented SHA and SHA-3 response files。
 
 <a id="ref-r15"></a>
 
-**R15** NIST. [SHA-256 worked examples](https://csrc.nist.gov/CSRC/media/Projects/Cryptographic-Standards-and-Guidelines/documents/examples/SHA256.pdf). 查看范围：One-block abc and two-block example。访问日期：2026-09-20。
+**R15** NIST. [SHA-256 worked examples](https://csrc.nist.gov/CSRC/media/Projects/Cryptographic-Standards-and-Guidelines/documents/examples/SHA256.pdf). 查看范围：One-block abc and two-block example。
 
 <a id="ref-r16"></a>
 
-**R16** NIST. [SHA3-256 sample of 1600-bit message](https://csrc.nist.gov/CSRC/media/Projects/Cryptographic-Standards-and-Guidelines/documents/examples/SHA3-256_1600.pdf). 查看范围：Input A3 repeated 200 times; final digest on last page。访问日期：2026-09-20。
+**R16** NIST. [SHA3-256 sample of 1600-bit message](https://csrc.nist.gov/CSRC/media/Projects/Cryptographic-Standards-and-Guidelines/documents/examples/SHA3-256_1600.pdf). 查看范围：Input A3 repeated 200 times; final digest on last page。
 
 <a id="ref-r17"></a>
 
-**R17** Keccak Team. [Keccak specifications summary](https://keccak.team/keccak_specs_summary.html). 查看范围：Round constants and rotation offsets。访问日期：2026-09-20。
+**R17** Keccak Team. [Keccak specifications summary](https://keccak.team/keccak_specs_summary.html). 查看范围：Round constants and rotation offsets。

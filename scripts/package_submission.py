@@ -1,4 +1,4 @@
-"""Bundle the reviewable coursework; excludes bytecode, QA images and full NIST ZIPs."""
+"""Bundle the reviewable coursework; excludes generated HTML/templates and local files."""
 
 import json
 from pathlib import Path
@@ -24,7 +24,7 @@ for folder in ("src", "tests", "scripts", "docs", "research", "results", "exampl
     for path in (ROOT / folder).rglob("*"):
         if not path.is_file() or "__pycache__" in path.parts:
             continue
-        if path.suffix in (".zip", ".pyc"):
+        if path.suffix in (".zip", ".pyc", ".html") or path.name.endswith(".template.md"):
             continue
         if folder == "results" and path.suffix in (".png", ".yml", ".log"):
             continue
@@ -39,8 +39,8 @@ with ZipFile(archive) as zipped:
     names = zipped.namelist()
     required = {"src/hashes.py", "src/merkle.py", "tests/vectors/SHA256ShortMsg.rsp",
                 "tests/vectors/SHA3_256LongMsg.rsp", "results/tests.json", "results/benchmark.json",
-                "docs/Merkle树承诺方案设计与安全性分析.md", "docs/Merkle树承诺方案设计与安全性分析.html",
-                "docs/Merkle树承诺作业详细说明与代码导读.md", "docs/Merkle树承诺作业详细说明与代码导读.html"}
+                "docs/Merkle树承诺方案设计与安全性分析.md",
+                "docs/Merkle树承诺作业详细说明与代码导读.md"}
     if not required.issubset(names):
         raise RuntimeError("missing required submission members")
 print(f"Packaged {len(names)} files; {archive.stat().st_size:,} bytes")

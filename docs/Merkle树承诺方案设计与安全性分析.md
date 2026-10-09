@@ -2,13 +2,14 @@
 
 应用密码学第一次作业技术报告
 
-资料检索与基准实验日期：2026 年 9 月 20 日。文档修订日期：2026 年 10 月 8 日。实现语言：Python 3.11。协议版本：MTC1。
+小组成员：李灿、杨赟。
+
 
 **摘要**
 
 本作业设计并实现一个支持按位置打开消息的随机化 Merkle 向量承诺。默认采用自行实现的 SHA-256，另实现 SHA3-256 作为对照。每个真实叶子使用独立的 32 字节私有随机数；叶子、内部节点、填充节点和最终承诺分别采用不同的域标记，向量长度和位置通过规范编码参与计算。方案在抗碰撞假设下具有计算 binding；在随机预言机模型、随机数独立且保密等条件下具有计算 hiding。普通确定性 Merkle 根不自动满足 hiding。
 
-实现通过 366 组 NIST 已知答案、3 个标准示例及树结构和篡改测试。性能实验比较两种哈希在实际节点长度及不同树规模下的成本，并保存重复测量数据。结果支持在本课程的纯 Python 实现中采用 SHA-256 作为默认套件。本报告的安全结论适用于明确模型下的经典计算攻击者；实现验证与密码安全性论证分别进行。
+实现通过 366 组 NIST 已知答案、3 个标准示例及树结构和篡改测试。性能实验比较两种哈希在实际节点长度及不同树规模下的成本，并保存重复测量数据。结果支持在本课程的纯 Python 实现中采用 SHA-256 作为默认套件。这份报告的安全结论适用于明确模型下的经典计算攻击者；实现验证与密码安全性论证分别进行。
 
 **关键词**：Merkle 树；向量承诺；绑定性；隐藏性；SHA-256；SHA3-256
 
@@ -25,7 +26,7 @@
 | 不使用已有哈希或树实现 | 核心代码零第三方依赖，测试只读取 NIST 静态测试数据 |
 | 验证与性能评估 | 第 7 节；原始计时、测试日志和攻击演示可重新生成 |
 
-本报告采用技术报告结构，依次说明调研依据、设计决策、协议规格、安全性分析与实验结果。AI 辅助参与资料整理、编码验证及文字组织，方案结论以实际代码、标准测试数据和保存的实验记录为依据。
+这份报告采用技术报告结构，依次说明调研依据、设计决策、协议规格、安全性分析与实验结果。AI 辅助参与资料整理、编码验证及文字组织，方案结论以实际代码、标准测试数据和保存的实验记录为依据。
 
 ## 2 已有方案调研
 
@@ -45,7 +46,7 @@ Merkle 树通过逐层哈希，将许多消息压缩成一个根。公开根后�
 | pymerkle 6.1.0 文档 | 支持包含与一致性证明；使用叶子和内部节点域分离；树拓扑与 RFC 9162 相关 | Python 适合表达接口与验证逻辑，但本作业不能安装或调用其实现 [4] |
 | Ethereum Merkle Patricia Trie | 面向键值状态的路径压缩 trie，节点编码规则与普通二叉树不同 | 它解决键查找与状态认证，本作业不需要引入 trie 编码与复杂节点类型 [5] |
 
-上述来源是不同应用中的代表性设计，不是兼容接口，也不是对所有“最新实现”的完整排名。开源仓库链接可能继续变化，核验清单记录访问日期和实际查看的路径。本次仅阅读其设计说明及相关代码，不把库函数、源文件或移植版嵌入作业实现。
+上述来源是不同应用中的代表性设计，不是兼容接口，也不是对所有“最新实现”的完整排名。开源仓库链接可能继续变化，核验清单记录实际查看的范围和路径。本次仅阅读其设计说明及相关代码，不把库函数、源文件或移植版嵌入作业实现。
 
 ### 2.3 普通树根与隐藏承诺的区别
 
@@ -94,7 +95,7 @@ SHA3-256 的吸收置换次数 = floor(L / 136) + 1
 
 SHA-256 属于 Merkle–Damgård 构造，存在标准长度扩展现象；因此不能把裸 SHA-256 当作任意用途的 MAC。这里叶子含固定格式的消息长度、索引、向量长度及私有随机数，内部节点长度固定，最终比较也要求同一已发布承诺。长度扩展产生的另一个输入或摘要不能直接成为同一承诺的有效新开口，故这一现象不等于本方案 binding 被破坏。
 
-SHA3-256 的结构不同，没有上述直接暴露完整链接状态的长度扩展方式，但它也不会自动隐藏低熵消息。两套哈希都必须采用本报告的随机化设计。默认选择 SHA-256 的依据是标准与测试充分、手写实现容易核查，并由本机短节点实验补充验证其性能。SHA3-256 保留为可切换套件；不把两者串联，也不宣称单机结果代表所有语言和平台。
+SHA3-256 的结构不同，没有上述直接暴露完整链接状态的长度扩展方式，但它也不会自动隐藏低熵消息。两套哈希都必须采用这份报告的随机化设计。默认选择 SHA-256 的依据是标准与测试充分、手写实现容易核查，并由本机短节点实验补充验证其性能。SHA3-256 保留为可切换套件；不把两者串联，也不宣称单机结果代表所有语言和平台。
 
 ## 4 协议与数据结构
 
@@ -211,7 +212,7 @@ Verify 接收独立可信的 C、明确的预期位置 i、π，以及可选的�
 
 ### 5.4 Hiding 游戏与随机预言机论证
 
-先考虑没有开口的标准隐藏游戏。攻击者选择两个向量 M₀、M₁，要求 n 相同；本报告进一步限定对应消息长度相同，以排除长度及运行时间等附带渠道。挑战者随机选择 b∈{0,1}，对 M_b 使用独立均匀随机数执行 Commit，只向攻击者返回 C。攻击者输出猜测 b′，隐藏优势定义为 `|Pr[b′=b]−1/2|`。
+先考虑没有开口的标准隐藏游戏。攻击者选择两个向量 M₀、M₁，要求 n 相同；这份报告进一步限定对应消息长度相同，以排除长度及运行时间等附带渠道。挑战者随机选择 b∈{0,1}，对 M_b 使用独立均匀随机数执行 Commit，只向攻击者返回 C。攻击者输出猜测 b′，隐藏优势定义为 `|Pr[b′=b]−1/2|`。
 
 在随机预言机模型中，只要攻击者没有查询某个真实叶子的完整输入，该叶摘要就可以看作与其消息无关的均匀随机值。把所有未查询的真实叶摘要替换为这样的随机值后，内部树和最终承诺只是这些值及公共结构的确定性函数，因此两组候选消息得到的公共视图分布相同。
 
@@ -223,7 +224,7 @@ Verify 接收独立可信的 C、明确的预期位置 i、π，以及可选的�
 
 允许攻击者获得部分开口时，可比较两组向量在已打开位置取值相同、未打开位置可能不同的游戏。已打开叶子的随机数可以公开，因为其余随机数是独立采样的。兄弟节点可能恰好是一个未打开叶子的摘要，但攻击者仍需猜测该叶子的秘密随机数才能做有效字典比较。前述 hybrid 思路可用于这种受限的部分打开视图。
 
-这不表示已打开消息不会在语义上透露其他消息。例如两条记录本身相等或由公开关系确定时，打开其中一条就可能揭示另一条。这种应用侧相关性不由密码树消除。本报告也不宣称已经证明针对任意相关消息分布的通用可模拟 selective-opening 安全性。
+这不表示已打开消息不会在语义上透露其他消息。例如两条记录本身相等或由公开关系确定时，打开其中一条就可能揭示另一条。这种应用侧相关性不由密码树消除。这份报告也不宣称已经证明针对任意相关消息分布的通用可模拟 selective-opening 安全性。
 
 所有叶子共用一个随机数是不安全的取舍：打开一个叶子就公开该随机数，如果路径中还包含另一个叶子的摘要，便可直接枚举其低熵消息。将整棵树仅用一个秘密随机数再包一层，也难以同时满足可公开验证的部分打开和剩余叶子保密。本实现因此选择每叶独立随机化。
 
@@ -329,7 +330,7 @@ ok = verify(public, proof, expected_index=1, expected_message=b"Bob")
 | Python | 3.11.7 / packaged by Anaconda, Inc. / (main, Dec 15 2023, 18:05:47) [MSC v.1916 64 bit (AMD64)] |
 | 逻辑 CPU 数 | 16 |
 | 进程数 | 1 |
-| 测量时间 UTC | 2026-09-20T04:54:47.211816+00:00 |
+| 测量时间 UTC | |
 
 每个案例先预热一次，再做 5 轮重复，报告中位数并保留每轮原始样本。定时器为 `perf_counter_ns`，计时期间关闭循环垃圾回收；对象分配和普通引用计数回收仍会发生。单进程、单线程运行，不使用本机优化哈希库或 SIMD。数据生成和磁盘写入在计时区间之外。
 
@@ -406,7 +407,7 @@ python scripts/benchmark.py
 python scripts/demo.py
 ```
 
-其中测试向量已经附在 `tests/vectors/`，测试和运行无需联网。`research/测试向量来源.md` 记录官方来源，`research/references-verified.json` 记录调研来源及用途。基准脚本默认 5 轮、最大 4096 叶子；较慢机器可使用 `--max-n 1024`，但新输出必须与本报告默认结果区分。
+其中测试向量已经附在 `tests/vectors/`，测试和运行无需联网。`research/测试向量来源.md` 记录官方来源，`research/references-verified.json` 记录调研来源及用途。基准脚本默认 5 轮、最大 4096 叶子；较慢机器可使用 `--max-n 1024`，但新输出必须与这份报告默认结果区分。
 
 使用自有 JSON 字符串数组承诺、打开和验证的示例：
 
@@ -430,36 +431,36 @@ python -m src.cli verify public.json opening.json --index 1 --message Bob
 
 ## 参考文献
 
-[1] Ben Laurie, Eran Messeri, Rob Stradling. [RFC 9162 Certificate Transparency Version 2.0](https://www.rfc-editor.org/rfc/rfc9162.html). RFC Editor, 2021. 访问日期 2026-09-20。
+[1] Ben Laurie, Eran Messeri, Rob Stradling. [RFC 9162 Certificate Transparency Version 2.0](https://www.rfc-editor.org/rfc/rfc9162.html). RFC Editor, 2021.
 
-[2] Bitcoin Core developers. [Bitcoin Core src/consensus/merkle.cpp](https://github.com/bitcoin/bitcoin/blob/master/src/consensus/merkle.cpp). Official GitHub repository, master branch observed at access time. 访问日期 2026-09-20。
+[2] Bitcoin Core developers. [Bitcoin Core src/consensus/merkle.cpp](https://github.com/bitcoin/bitcoin/blob/master/src/consensus/merkle.cpp). Official GitHub repository, master branch observed at access time.
 
-[3] OpenZeppelin. [OpenZeppelin merkle-tree](https://github.com/OpenZeppelin/merkle-tree). Official GitHub repository README. 访问日期 2026-09-20。
+[3] OpenZeppelin. [OpenZeppelin merkle-tree](https://github.com/OpenZeppelin/merkle-tree). Official GitHub repository README.
 
-[4] pymerkle project. [pymerkle 6.1.0 documentation](https://pymerkle.readthedocs.io/en/latest/). Project documentation. 访问日期 2026-09-20。
+[4] pymerkle project. [pymerkle 6.1.0 documentation](https://pymerkle.readthedocs.io/en/latest/). Project documentation.
 
-[5] ethereum.org contributors. [Merkle Patricia Trie](https://ethereum.org/developers/docs/data-structures-and-encoding/patricia-merkle-trie/). Ethereum developer documentation. 访问日期 2026-09-20。
+[5] ethereum.org contributors. [Merkle Patricia Trie](https://ethereum.org/developers/docs/data-structures-and-encoding/patricia-merkle-trie/). Ethereum developer documentation.
 
-[6] Dario Catalano, Dario Fiore. [Vector Commitments and their Applications](https://eprint.iacr.org/2011/495). PKC 2013; full version ePrint 2011/495, revised 2012, 2013. 访问日期 2026-09-20。
+[6] Dario Catalano, Dario Fiore. [Vector Commitments and their Applications](https://eprint.iacr.org/2011/495). PKC 2013; full version ePrint 2011/495, revised 2012, 2013.
 
-[7] NIST. [FIPS PUB 180-4 Secure Hash Standard](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.180-4.pdf). NIST FIPS, 2015. 访问日期 2026-09-20。
+[7] NIST. [FIPS PUB 180-4 Secure Hash Standard](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.180-4.pdf). NIST FIPS, 2015.
 
-[8] NIST. [FIPS PUB 202 SHA-3 Standard Permutation-Based Hash and Extendable-Output Functions](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.202.pdf). NIST FIPS, 2015. 访问日期 2026-09-20。
+[8] NIST. [FIPS PUB 202 SHA-3 Standard Permutation-Based Hash and Extendable-Output Functions](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.202.pdf). NIST FIPS, 2015.
 
-[9] NIST CSRC. [Hash Functions](https://csrc.nist.gov/projects/hash-functions). NIST Hash Functions project. 访问日期 2026-09-20。
+[9] NIST CSRC. [Hash Functions](https://csrc.nist.gov/projects/hash-functions). NIST Hash Functions project.
 
-[10] Markku-Juhani O. Saarinen, Jean-Philippe Aumasson. [RFC 7693 The BLAKE2 Cryptographic Hash and Message Authentication Code](https://www.rfc-editor.org/rfc/rfc7693.html). RFC Editor, 2015. 访问日期 2026-09-20。
+[10] Markku-Juhani O. Saarinen, Jean-Philippe Aumasson. [RFC 7693 The BLAKE2 Cryptographic Hash and Message Authentication Code](https://www.rfc-editor.org/rfc/rfc7693.html). RFC Editor, 2015.
 
-[11] BLAKE3 team. [BLAKE3 specifications and design rationale](https://github.com/BLAKE3-team/BLAKE3-specs). Official BLAKE3 specifications repository. 访问日期 2026-09-20。
+[11] BLAKE3 team. [BLAKE3 specifications and design rationale](https://github.com/BLAKE3-team/BLAKE3-specs). Official BLAKE3 specifications repository.
 
-[12] Lorenzo Grassi, Dmitry Khovratovich, Christian Rechberger, Arnab Roy, Markus Schofnegger. [Poseidon A New Hash Function for Zero-Knowledge Proof Systems](https://eprint.iacr.org/2019/458). IACR ePrint 2019/458, 2019. 访问日期 2026-09-20。
+[12] Lorenzo Grassi, Dmitry Khovratovich, Christian Rechberger, Arnab Roy, Markus Schofnegger. [Poseidon A New Hash Function for Zero-Knowledge Proof Systems](https://eprint.iacr.org/2019/458). IACR ePrint 2019/458, 2019.
 
-[13] Purdue University CS 555 course materials. [CS 555 Topic 14 Random Oracle Model and Hashing Applications](https://www.cs.purdue.edu/homes/jblocki/courses/555_Spring17/slides/Lecture14.pdf). University course lecture slides, Spring17 directory, 2017. 访问日期 2026-09-20。
+[13] Purdue University CS 555 course materials. [CS 555 Topic 14 Random Oracle Model and Hashing Applications](https://www.cs.purdue.edu/homes/jblocki/courses/555_Spring17/slides/Lecture14.pdf). University course lecture slides, Spring17 directory, 2017.
 
-[14] NIST CSRC. [Cryptographic Algorithm Validation Program Secure Hashing](https://csrc.nist.gov/projects/cryptographic-algorithm-validation-program/secure-hashing). NIST CAVP. 访问日期 2026-09-20。
+[14] NIST CSRC. [Cryptographic Algorithm Validation Program Secure Hashing](https://csrc.nist.gov/projects/cryptographic-algorithm-validation-program/secure-hashing). NIST CAVP.
 
-[15] NIST. [SHA-256 worked examples](https://csrc.nist.gov/CSRC/media/Projects/Cryptographic-Standards-and-Guidelines/documents/examples/SHA256.pdf). NIST Cryptographic Standards and Guidelines examples. 访问日期 2026-09-20。
+[15] NIST. [SHA-256 worked examples](https://csrc.nist.gov/CSRC/media/Projects/Cryptographic-Standards-and-Guidelines/documents/examples/SHA256.pdf). NIST Cryptographic Standards and Guidelines examples.
 
-[16] NIST. [SHA3-256 sample of 1600-bit message](https://csrc.nist.gov/CSRC/media/Projects/Cryptographic-Standards-and-Guidelines/documents/examples/SHA3-256_1600.pdf). NIST Cryptographic Standards and Guidelines examples. 访问日期 2026-09-20。
+[16] NIST. [SHA3-256 sample of 1600-bit message](https://csrc.nist.gov/CSRC/media/Projects/Cryptographic-Standards-and-Guidelines/documents/examples/SHA3-256_1600.pdf). NIST Cryptographic Standards and Guidelines examples.
 
-[17] Keccak Team. [Keccak specifications summary](https://keccak.team/keccak_specs_summary.html). Algorithm designers' documentation. 访问日期 2026-09-20。
+[17] Keccak Team. [Keccak specifications summary](https://keccak.team/keccak_specs_summary.html). Algorithm designers' documentation.

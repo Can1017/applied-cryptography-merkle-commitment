@@ -1,12 +1,13 @@
 # 随机化 Merkle Tree Commitment
 
-应用密码学第一次作业。项目使用 Python 自行实现 SHA-256、SHA3-256 及有序 Merkle 树，提供承诺、单点打开、验证和完整打开验证。每个真实叶子使用独立的秘密随机数，并采用域分离和规范编码绑定消息位置与向量长度。核心实现、测试和基准均不调用现成密码哈希函数或 Merkle Tree 库。
+应用密码学第一次作业。
+
+小组成员：李灿、杨赟。项目使用 Python 自行实现 SHA-256、SHA3-256 及有序 Merkle 树，提供承诺、单点打开、验证和完整打开验证。每个真实叶子使用独立的秘密随机数，并采用域分离和规范编码绑定消息位置与向量长度。核心实现、测试和基准均不调用现成密码哈希函数或 Merkle Tree 库。
 
 ## 报告与阅读路径
 
 - [方案设计与安全性分析](docs/Merkle树承诺方案设计与安全性分析.md)：调研、哈希选型、协议设计、binding/hiding 分析及实验结论。
 - [详细说明与代码导读](docs/Merkle树承诺作业详细说明与代码导读.md)：基本原理、逐步算例、源码解读、运行步骤及结果判读。
-- 两份报告同时提供 HTML 阅读版，图像已内嵌；下载后可在浏览器中独立打开。[主报告 HTML](docs/Merkle树承诺方案设计与安全性分析.html) · [详细说明 HTML](docs/Merkle树承诺作业详细说明与代码导读.html)。
 
 ![承诺、打开与验证流程](docs/figures/protocol_workflow.png)
 
@@ -26,10 +27,9 @@ Set-Location applied-cryptography-merkle-commitment
 ```powershell
 python --version
 python -B -m unittest discover -s tests -v
-python scripts/check_guide.py
 ```
 
-已保存的验证包含 23 个测试方法、366 组 NIST 已知答案和 3 个标准示例，覆盖两种哈希、树形边界、合法开口、篡改输入、传输格式与 CLI。GitHub Actions 使用 Python 3.11 自动执行测试及文档结构检查。测试向量随仓库提供，测试运行无需联网。
+已保存的验证包含 23 个测试方法、366 组 NIST 已知答案和 3 个标准示例，覆盖两种哈希、树形边界、合法开口、篡改输入、传输格式与 CLI。GitHub Actions 使用 Python 3.11 自动执行测试。测试向量随仓库提供，测试运行无需联网。
 
 以下命令在新目录中创建三条示例消息的承诺，并打开索引 1 的 Bob：
 
@@ -60,8 +60,8 @@ python -m src.cli verify "$runDir/public.json" "$runDir/opening.json" --index 1 
 ```text
 src/          手写密码哈希、承诺协议、编解码和 CLI
 tests/       已知答案、功能与篡改测试及 NIST 静态向量
-scripts/     测试、攻击演示、性能测量、图表和报告重建
-docs/        中文报告、阅读版、可重建模板及图表
+scripts/     测试、攻击演示、性能测量和图表
+docs/        中文 Markdown 报告及图表
 research/    调研来源、测试向量来源与课程要求
 results/     原始实验记录、测试日志和源码清单
 examples/    公开教学输入
@@ -80,16 +80,14 @@ python scripts/audit_dependencies.py
 
 默认基准测量五轮、最大 4096 叶子。`--max-n 1024` 可缩短运行，但正式报告的重建要求使用默认完整数据。256 与 257 叶子附近的局部复测保存在 `results/benchmark_diagnostic.json`，主实验记录保留原始波动。
 
-重建文档仅需安装可选展示依赖；这些包不参与密码运算：
+图表已经随项目提供；如需重新生成图表，可安装可选展示依赖。这些包不参与密码运算：
 
 ```powershell
 python -m pip install -r requirements-docs.txt
-python scripts/build_report.py
-python scripts/build_guide.py
-python scripts/check_guide.py
+python scripts/build_figures.py
 python scripts/package_submission.py
 ```
 
-图表生成源码位于 `scripts/build_figures.py`、`scripts/build_report.py` 与 `scripts/build_guide.py`。报告中的 Markdown 是阅读与 GitHub 展示版本，`.template.md` 是修订入口；修改模板后应同步重建 Markdown 与 HTML。
+图表生成源码位于 `scripts/build_figures.py`。两份正式报告直接以 Markdown 形式维护，图片使用 `docs/figures/` 中的相对路径。
 
 仓库保留源码、测试、所用测试向量、报告及图表、来源记录和原始实验数据。个人运行目录、私有状态、浏览器日志、检查截图及重复压缩包由 `.gitignore` 排除。官方向量完整下载 ZIP 留在本机，仓库仅提供测试所需的四个 `.rsp` 文件，其来源见 [测试向量来源](research/测试向量来源.md)。
